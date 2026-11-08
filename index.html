@@ -1,0 +1,204 @@
+<!doctype html>
+<!--
+  Starter markup for the Tip calculator app.
+  How to use it (full steps in README.md):
+  1. Copy everything inside <head> and <body> into your Vite project's index.html.
+  2. Copy starter/style.css to src/style.css and import it in src/main.ts.
+  3. Copy everything inside starter/public/ into your project's public/ folder.
+  Do not change the Tailwind classes. Add id or data- attributes only if you need them.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex min-h-screen flex-col items-center bg-grey-200 font-space-mono font-bold">
+    <header class="pt-[50px] lg:pt-[163px]">
+      <h1>
+        <img src="/images/logo.svg" alt="Splitter" width="87" height="54" class="block" />
+      </h1>
+    </header>
+
+    <main
+      class="mt-10 flex w-full flex-1 justify-center md:mb-20 md:flex-none md:px-6 lg:mt-[87px]"
+    >
+      <form
+        id="tip-form"
+        novalidate
+        class="flex w-full flex-col gap-8 rounded-t-[25px] bg-white px-6 py-8 shadow-[0_32px_43px_rgba(79,166,175,0.2)] md:max-w-[608px] md:gap-10 md:rounded-[25px] md:px-[75.5px] md:py-[54px] lg:max-w-[920px] lg:flex-row lg:items-center lg:gap-12 lg:px-10 lg:py-8"
+      >
+        <!-- Inputs -->
+        <div class="flex flex-col gap-8 px-2 md:gap-6 md:px-0 lg:w-[379px] lg:shrink-0 lg:gap-10">
+          <!-- Bill -->
+          <div class="flex flex-col gap-2">
+            <label for="bill" class="text-base leading-6 text-grey-500">Bill</label>
+            <div class="relative">
+              <img
+                src="/images/icon-dollar.svg"
+                alt=""
+                width="11"
+                height="17"
+                class="pointer-events-none absolute top-1/2 left-[18px] -translate-y-1/2"
+              />
+              <input
+                type="text"
+                id="bill"
+                name="bill"
+                inputmode="decimal"
+                autocomplete="off"
+                placeholder="0"
+                class="h-12 w-full cursor-pointer rounded-[5px] bg-grey-50 pr-4 pl-10 text-right text-2xl leading-9 text-green-900 caret-green-400 outline-2 -outline-offset-2 outline-transparent placeholder:text-green-900/35 hover:outline-green-400 focus:outline-green-400"
+              />
+            </div>
+          </div>
+
+          <!-- Tip -->
+          <fieldset>
+            <legend class="mb-2 text-base leading-6 text-grey-500">Select Tip %</legend>
+            <!-- A selected tip button has aria-pressed="true". Your TypeScript sets it. -->
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+              <button
+                type="button"
+                data-tip="5"
+                aria-pressed="false"
+                class="h-12 cursor-pointer rounded-[5px] bg-green-900 text-2xl leading-9 text-white transition-colors hover:bg-green-200 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 aria-pressed:bg-green-400! aria-pressed:text-green-900!"
+              >
+                5%
+              </button>
+              <button
+                type="button"
+                data-tip="10"
+                aria-pressed="false"
+                class="h-12 cursor-pointer rounded-[5px] bg-green-900 text-2xl leading-9 text-white transition-colors hover:bg-green-200 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 aria-pressed:bg-green-400! aria-pressed:text-green-900!"
+              >
+                10%
+              </button>
+              <button
+                type="button"
+                data-tip="15"
+                aria-pressed="false"
+                class="h-12 cursor-pointer rounded-[5px] bg-green-900 text-2xl leading-9 text-white transition-colors hover:bg-green-200 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 aria-pressed:bg-green-400! aria-pressed:text-green-900!"
+              >
+                15%
+              </button>
+              <button
+                type="button"
+                data-tip="25"
+                aria-pressed="false"
+                class="h-12 cursor-pointer rounded-[5px] bg-green-900 text-2xl leading-9 text-white transition-colors hover:bg-green-200 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 aria-pressed:bg-green-400! aria-pressed:text-green-900!"
+              >
+                25%
+              </button>
+              <button
+                type="button"
+                data-tip="50"
+                aria-pressed="false"
+                class="h-12 cursor-pointer rounded-[5px] bg-green-900 text-2xl leading-9 text-white transition-colors hover:bg-green-200 hover:text-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 aria-pressed:bg-green-400! aria-pressed:text-green-900!"
+              >
+                50%
+              </button>
+              <input
+                type="text"
+                id="custom-tip"
+                name="custom-tip"
+                inputmode="decimal"
+                autocomplete="off"
+                placeholder="Custom"
+                aria-label="Custom tip percentage"
+                class="h-12 w-full min-w-0 cursor-pointer rounded-[5px] bg-grey-50 px-4 text-center text-2xl leading-9 text-green-900 caret-green-400 outline-2 -outline-offset-2 outline-transparent placeholder:text-grey-550 hover:outline-green-400 focus:outline-green-400 lg:pr-3 lg:text-right"
+              />
+            </div>
+          </fieldset>
+
+          <!-- Number of people -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between gap-4">
+              <label for="people" class="text-base leading-6 text-grey-500">Number of People</label>
+              <!-- Error message. Remove hidden to show it, and set aria-invalid="true" on the input. -->
+              <p id="people-error" hidden class="text-right text-base leading-6 text-orange-400">
+                Can’t be zero
+              </p>
+            </div>
+            <div class="relative">
+              <img
+                src="/images/icon-person.svg"
+                alt=""
+                width="13"
+                height="16"
+                class="pointer-events-none absolute top-1/2 left-[17px] -translate-y-1/2"
+              />
+              <input
+                type="text"
+                id="people"
+                name="people"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="0"
+                aria-describedby="people-error"
+                aria-invalid="false"
+                class="h-12 w-full cursor-pointer rounded-[5px] bg-grey-50 pr-4 pl-10 text-right text-2xl leading-9 text-green-900 caret-green-400 outline-2 -outline-offset-2 outline-transparent placeholder:text-green-900/35 hover:outline-green-400 focus:outline-green-400 aria-invalid:outline-orange-400!"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <section
+          aria-label="Results"
+          class="flex flex-col gap-8 rounded-[15px] bg-green-900 px-6 py-[29.5px] md:h-[300px] md:justify-center md:gap-4 md:px-[47.5px] md:py-[43px] lg:h-[417px] lg:w-[413px] lg:shrink-0 lg:justify-between lg:px-10 lg:py-[37.5px]"
+        >
+          <div class="flex flex-col gap-6 md:gap-2 lg:gap-6">
+            <div class="flex items-center justify-between gap-4">
+              <p class="flex flex-col">
+                <span class="text-base leading-6 text-white">Tip Amount</span>
+                <span class="text-[13px] leading-[19px] text-grey-400">/ person</span>
+              </p>
+              <output
+                id="tip-amount"
+                for="bill custom-tip people"
+                class="text-right text-[32px] leading-[47px] tracking-[-0.67px] text-green-400 md:text-5xl md:leading-[71px] md:tracking-[-1px]"
+              >
+                $0.00
+              </output>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <p class="flex flex-col">
+                <span class="text-base leading-6 text-white">Total</span>
+                <span class="text-[13px] leading-[19px] text-grey-400">/ person</span>
+              </p>
+              <output
+                id="total-amount"
+                for="bill custom-tip people"
+                class="text-right text-[32px] leading-[47px] tracking-[-0.67px] text-green-400 md:text-5xl md:leading-[71px] md:tracking-[-1px]"
+              >
+                $0.00
+              </output>
+            </div>
+          </div>
+
+          <!-- Disabled until the form has input. Your TypeScript removes disabled. -->
+          <button
+            type="button"
+            id="reset"
+            class="h-12 w-full cursor-pointer rounded-[5px] bg-green-400 text-xl leading-[30px] text-green-900 uppercase transition-colors enabled:hover:bg-green-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 disabled:cursor-not-allowed disabled:bg-green-750 disabled:text-green-800"
+          >
+            Reset
+          </button>
+        </section>
+      </form>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
